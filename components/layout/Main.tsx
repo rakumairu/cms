@@ -3,6 +3,7 @@ import { IMeta } from '../../utils/interfaces';
 import { defaultMeta } from '../../utils/StaticData';
 import Footer from './Footer';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 interface IProps {
     meta?: IMeta
@@ -69,12 +70,13 @@ const Main = ({ meta, children }: IProps) => {
                     }}
                 /> */}
             </Head>
-            <div>
-                <Header />
-                <div className="min-h-screen">
+            <div className="min-h-screen flex relative overflow-hidden">
+                <Sidebar />
+                <div className="min-h-screen flex flex-col w-full lg:w-4/5 bg-white">
+                    <Header />
                     { children }
+                    <Footer />
                 </div>
-                <Footer />
             </div>
         </>
     )

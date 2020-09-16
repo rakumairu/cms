@@ -35,6 +35,9 @@ module.exports = {
                 0 8px 8px rgba(0,0,0,0.11), 
                 0 16px 16px rgba(0,0,0,0.11), 
                 0 32px 32px rgba(0,0,0,0.11)`,
+            },
+            borderRadius: {
+                '2.5rem': '2.5rem'
             }
         },
     },
