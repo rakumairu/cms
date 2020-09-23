@@ -8,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/client": "^3.2.0",
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@tinymce/tinymce-react": "^3.6.1",
+    "@types/js-cookie": "^2.2.6",
     "@types/lodash": "^4.14.161",
+    "graphql": "^15.3.0",
+    "js-cookie": "^2.2.1",
     "lodash": "^4.17.20",
     "next": "9.5.3",
     "postcss-import": "^12.0.1",
