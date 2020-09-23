@@ -1,6 +1,6 @@
 import Main from "@/components/layout/Main"
 import { useMutation, useQuery } from "@apollo/client";
-import { ADD_TAG, UPDATE_TAG } from "graphql/mutations";
+import { ADD_TAG, REMOVE_TAG, UPDATE_TAG } from "graphql/mutations";
 import { TAGS } from "graphql/queries";
 import { useState } from "react";
 import { _getToken } from '$/utils/Cookie'
@@ -30,6 +30,18 @@ const Tags = () => {
     
     const [updateTagQL] = useMutation(UPDATE_TAG)
 
+    const [removeTagQL] = useMutation(REMOVE_TAG, {
+        onCompleted: () => {
+            refetchTags()
+        }
+    })
+
+    const removeTag = (slug: string) => {
+        removeTagQL({variables: {
+            slug
+        }})
+    }
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name
         const value = e.target.value
@@ -58,6 +70,8 @@ const Tags = () => {
                                 <p>{ tag.id }</p>
                                 <p>{ tag.slug }</p>
                                 <p>{ tag.label }</p>
+                                <p>{ tag.active ? 'active' : 'non active' }</p>
+                                <button onClick={() => removeTag(tag.slug)}>remove</button>
                             </div>
                         )) }
                     </div>

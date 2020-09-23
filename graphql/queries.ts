@@ -6,6 +6,7 @@ export const TAGS = gql`
             id
             slug
             label
+            active
         }
     }
 `

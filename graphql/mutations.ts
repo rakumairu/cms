@@ -19,15 +19,23 @@ export const ADD_TAG = gql`
         createTag(label: $label) {
             slug
             label
+            active
         }
     }
 `
 
 export const UPDATE_TAG = gql`
-    mutation UpdateTag($slug: String!, $label: String!) {
-        updateTag(slug: $slug, label: $label) {
+    mutation UpdateTag($slug: String!, $label: String!, $active: Boolean) {
+        updateTag(slug: $slug, label: $label, active: $active) {
             slug
             label
+            active
         }
+    }
+`
+
+export const REMOVE_TAG = gql`
+    mutation RemoveTag($slug: String!) {
+        removeTag(slug: $slug)
     }
 `
