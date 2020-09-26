@@ -10,3 +10,7 @@ export interface IUser {
     name: string
     role: string
 }
+
+export interface IErrors {
+    [key: string]: string
+}

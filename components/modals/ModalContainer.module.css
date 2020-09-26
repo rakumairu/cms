@@ -1,0 +1,42 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    transform: scale(0);
+}
+
+.open {
+    transform: scale(1);
+}
+
+.close {
+    transition-delay: .2s;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 50;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.4);
+    /* transition: all .2s linear; */
+}
+
+.card {
+    transition: opacity .2s ease-in-out;
+    opacity: 0;
+    z-index: 51;
+}
+
+.card-open {
+    opacity: 1;
+}

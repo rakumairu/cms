@@ -25,7 +25,7 @@ export const ADD_TAG = gql`
 `
 
 export const UPDATE_TAG = gql`
-    mutation UpdateTag($slug: String!, $label: String!, $active: Boolean) {
+    mutation UpdateTag($slug: String!, $label: String!, $active: Boolean!) {
         updateTag(slug: $slug, label: $label, active: $active) {
             slug
             label
@@ -37,5 +37,13 @@ export const UPDATE_TAG = gql`
 export const REMOVE_TAG = gql`
     mutation RemoveTag($slug: String!) {
         removeTag(slug: $slug)
+    }
+`
+
+export const ACTIVATE_TAG = gql`
+    mutation UpdateTag($slug: String!, $active: Boolean!) {
+        updateTag(slug: $slug, active: $active) {
+            active
+        }
     }
 `
