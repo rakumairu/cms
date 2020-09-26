@@ -4,7 +4,7 @@ import { _getToken, _removeToken } from "./Cookie";
 import { parseCookie } from "./Helpers";
 
 export const checkAuth = async (context: GetServerSidePropsContext<ParsedUrlQuery>) => {
-    const token = process.browser ? _getToken() : parseCookie(context.req.headers.cookie)._token
+    const token = process.browser ? _getToken() : context.req.headers.cookie ? parseCookie(context.req.headers.cookie)._token : ''
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth`, {
         headers: {
