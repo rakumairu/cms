@@ -65,7 +65,7 @@ const Tags = () => {
                     <p>... loading</p>
                     :
                     <div>
-                        { tags.tags?.map(tag => (
+                        { tags?.tags?.map(tag => (
                             <div key={tag.id} className="flex items-center space-x-4 > *">
                                 <p>{ tag.id }</p>
                                 <p>{ tag.slug }</p>
