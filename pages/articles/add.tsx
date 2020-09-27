@@ -1,7 +1,7 @@
+import dynamic from 'next/dynamic'
 import { checkAuth, checkRole } from "$/utils/Auth"
 import { validateData } from "$/utils/Helpers"
 import { IErrors } from "$/utils/interfaces"
-import TextEditor from "@/components/forms/TextEditor"
 import Main from "@/components/layout/Main"
 import { useMutation, useQuery } from "@apollo/client"
 import { ADD_ARTICLE } from "graphql/mutations"
@@ -9,6 +9,8 @@ import { TAGS } from "graphql/queries"
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import { useState } from "react"
+
+const TextEditor = dynamic(() => import("@/components/forms/TextEditor"))
 
 const AddArticle = () => {
     const router = useRouter()

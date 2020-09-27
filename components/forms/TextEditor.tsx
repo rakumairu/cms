@@ -11,6 +11,7 @@ const TextEditor = ({ name, value, onChange }: IProps) => {
         <Editor
             id={name}
             value={value}
+            apiKey={process.env.NEXT_PUBLIC_TMCE_KEY || ''}
             init={{
                 height: 500,
                 menubar: false,
