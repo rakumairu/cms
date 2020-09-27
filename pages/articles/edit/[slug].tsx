@@ -8,14 +8,16 @@ import { ARTICLES, TAGS } from "graphql/queries"
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import { useState } from "react"
+import { IUser } from '$/utils/interfaces'
 
 const TextEditor = dynamic(() => import("@/components/forms/TextEditor"))
 
 interface IProps {
     slug: string
+    user: IUser
 }
 
-const EditArticle = ({ slug }: IProps) => {
+const EditArticle = ({ slug, user }: IProps) => {
     const router = useRouter()
     
     const [state, setState] = useState({
@@ -28,16 +30,21 @@ const EditArticle = ({ slug }: IProps) => {
 
     const {  } = useQuery(ARTICLES, {
         variables: {
-            slug
+            slug,
+            author_slug: user.slug
         },
         onCompleted: data => {
-            const editData = data.articles.list[0]
-
-            setState({
-                title: editData.title,
-                content: editData.content,
-                tags: editData.tags.map(tag => ({ label: tag.label, slug: tag.slug }))
-            })
+            if (data?.articles?.list.length > 0) {
+                const editData = data.articles.list[0]
+    
+                setState({
+                    title: editData.title,
+                    content: editData.content,
+                    tags: editData.tags.map(tag => ({ label: tag.label, slug: tag.slug }))
+                })
+            } else {
+                router.push('/articles')
+            }
         }
     })
     
@@ -125,11 +132,12 @@ const EditArticle = ({ slug }: IProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     await checkAuth(context)
-    await checkRole(context, ['author'])
+    const user = await checkRole(context, ['author'])
 
     return {
         props: {
-            slug: context.params.slug
+            slug: context.params.slug,
+            user
         }
     }
 }

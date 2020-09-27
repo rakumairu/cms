@@ -8,7 +8,8 @@ export interface IMeta {
 export interface IUser {
     username: string
     name: string
-    role: string
+    role: 'admin' | 'author' | 'reader'
+    slug: string
 }
 
 export interface IErrors {

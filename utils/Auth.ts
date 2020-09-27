@@ -35,4 +35,6 @@ export const checkRole = async (context: GetServerSidePropsContext<ParsedUrlQuer
         context.res.writeHead(302, { Location: '/' })
         context.res.end()
     }
+
+    return user
 }

@@ -26,8 +26,8 @@ export const USERS = gql`
 `
 
 export const ARTICLES = gql`
-    query articles($slug: String, $tag_slug: String, $cursor: String, $limit: String, $sort: String, $asc: String $search: String) {
-        articles(slug: $slug, tag_slug: $tag_slug, cursor: $cursor, limit: $limit, sort: $sort, asc: $asc search: $search) {
+    query articles($slug: String, $tag_slug: String, $cursor: String, $limit: String, $sort: String, $asc: String, $search: String, $author_slug: String) {
+        articles(slug: $slug, tag_slug: $tag_slug, cursor: $cursor, limit: $limit, sort: $sort, asc: $asc, search: $search, author_slug: $author_slug) {
             list {
                 id
                 title

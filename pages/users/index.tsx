@@ -1,6 +1,6 @@
 import Main from "@/components/layout/Main"
 import { useMutation, useQuery } from "@apollo/client";
-import { ACTIVATE_TAG, ADD_USER, ADD_TAG, REMOVE_TAG, UPDATE_TAG, UPDATE_USER, REMOVE_USER } from "graphql/mutations";
+import { ADD_USER, UPDATE_USER, REMOVE_USER } from "graphql/mutations";
 import { USERS } from "graphql/queries";
 import { useState } from "react";
 import { _getToken } from '$/utils/Cookie'
