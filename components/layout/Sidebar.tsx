@@ -15,6 +15,9 @@ const Sidebar = () => {
             <Link href="/tags">
                 <p>Tags</p>
             </Link>
+            <Link href="/users">
+                <p>Users</p>
+            </Link>
             <p onClick={logout}>Logout</p>
         </div>
     )

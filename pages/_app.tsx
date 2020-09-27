@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
         return {
             headers: {
             ...headers,
-            authorization: token ? `Bearer ${token}` : "",
+            authorization: token && (_.operationName !== 'Login') ? `Bearer ${token}` : "",
             }
         }
     })

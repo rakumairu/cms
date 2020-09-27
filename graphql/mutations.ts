@@ -14,6 +14,7 @@ export const LOGIN = gql`
     }
 `
 
+// TAGS
 export const ADD_TAG = gql`
     mutation CreateTag($label: String!) {
         createTag(label: $label) {
@@ -45,5 +46,29 @@ export const ACTIVATE_TAG = gql`
         updateTag(slug: $slug, active: $active) {
             active
         }
+    }
+`
+
+// AUTHORS || USER
+export const ADD_USER = gql`
+    mutation Register($username: String!, $password: String!, $name: String!, $role: String!) {
+        register(username: $username, password: $password, name: $name, role: $role) {
+            username
+            role
+        }
+    }
+`
+
+export const UPDATE_USER = gql`
+    mutation UpdateUser($username: String!, $name: String, $password: String, $role: String, $active: Boolean) {
+        updateUser(username: $username, name: $name, password: $password, role: $role, active: $active) {
+            username
+        }
+    }
+`
+
+export const REMOVE_USER = gql`
+    mutation RemoveUser($username: String!) {
+        removeUser(username: $username)
     }
 `
