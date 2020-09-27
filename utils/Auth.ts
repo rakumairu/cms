@@ -29,7 +29,7 @@ export const checkAuth = async (context: GetServerSidePropsContext<ParsedUrlQuer
  * @param roles array of roles that authorized to access the page
  */
 export const checkRole = async (context: GetServerSidePropsContext<ParsedUrlQuery>, roles: string[]) => {
-    const user = process.browser ? _getUser() : context.req.headers.cookie ? JSON.parse(parseCookie(context.req.headers.cookie)._user) : null
+    const user = process.browser ? JSON.parse(_getUser()) : context.req.headers.cookie ? JSON.parse(parseCookie(context.req.headers.cookie)._user) : null
 
     if (!roles.includes(user?.role)) {
         context.res.writeHead(302, { Location: '/' })

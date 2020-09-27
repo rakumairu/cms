@@ -27,7 +27,7 @@ export const validateData = (data: any, exception?: string[]) => {
     for (let key in data) {
         if (exception?.includes(key)) continue
         const value = data[key]
-        if (value === '') {
+        if ((typeof value === 'string' && value === '') || (typeof value === 'object' && 'length' in value && value.length === 0)) {
             valid = false
             errors[key] = message
         } else {

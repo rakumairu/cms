@@ -72,3 +72,26 @@ export const REMOVE_USER = gql`
         removeUser(username: $username)
     }
 `
+
+// ARTICLES
+export const ADD_ARTICLE = gql`
+    mutation CreateArticle($title: String!, $content: String!, $tags: [String!]!) {
+        createArticle(title: $title, content: $content, tags: $tags) {
+            slug
+        }
+    }
+`
+
+export const UPDATE_ARTICLE = gql`
+    mutation UpdateArticle($slug: String!, $title: String, $content: String, $tags: [String!]) {
+        updateArticle(slug: $slug, title: $title, content: $content, tags: $tags) {
+            slug
+        }
+    }
+`
+
+export const REMOVE_ARTICLE = gql`
+    mutation RemoveArticle($slug: String!) {
+        removeArticle(slug: $slug)
+    }
+`

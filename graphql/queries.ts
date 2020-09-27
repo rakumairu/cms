@@ -12,8 +12,8 @@ export const TAGS = gql`
 `
 
 export const USERS = gql`
-    query userrs($slug: String, $role: String) {
-        users (slug: $slug, role: $role) {
+    query users($slug: String, $role: String) {
+        users(slug: $slug, role: $role) {
             id
             username
             name
@@ -21,6 +21,32 @@ export const USERS = gql`
             role
             created
             active
+        }
+    }
+`
+
+export const ARTICLES = gql`
+    query articles($slug: String, $tag_slug: String, $cursor: String, $limit: String, $sort: String, $asc: String $search: String) {
+        articles(slug: $slug, tag_slug: $tag_slug, cursor: $cursor, limit: $limit, sort: $sort, asc: $asc search: $search) {
+            list {
+                id
+                title
+                slug
+                tags {
+                    slug
+                    label
+                    active
+                }
+                author {
+                    name
+                }
+                content
+                created
+                updated
+            }
+            cursor
+            limit
+            hasMore
         }
     }
 `

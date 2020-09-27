@@ -10,7 +10,7 @@ const TextEditor = ({ name, value, onChange }: IProps) => {
     return (
         <Editor
             id={name}
-            initialValue={value}
+            value={value}
             init={{
                 height: 500,
                 menubar: false,
